@@ -1,0 +1,77 @@
+    <div class="container">
+    	<div class = "row">
+    		<div class="col-xs-4"></div>
+
+    		<div class="col-xs-4">
+    			<img src = "/assets/images/burger.png">
+    		</div>
+    		<div class="col-xs-4"></div>
+    	</div><!--row-->
+
+    	<div class = "row">
+            <div class = "col-xs-4"></div>   		
+    		<div class="col-xs-4">
+    			<h2>EAT-DA-BURGER!</h2>
+    		</div>
+    		<div class="col-xs-4"></div>
+    	</div><!--row-->
+
+    	<div class = "row">
+    		<div class="col-xs-4">
+                    <!--this will list each uneaten burger-->
+                    <ol>
+                      {{#each burger}}
+                        {{#unless devoured}}
+                        <div class = "well">
+                          <li>
+                            <p>{{burger_name}}</p>
+                            <form action="/?_method=PUT" method="POST">
+                             <button class = "btn btn-sm btn-warning" name = "id" type="submit" value = {{this.id}}>Devour It!</button>
+                             </form>
+                          </li>
+                        </div>
+                        {{/unless}}
+                      {{/each}}
+                    </ol>               
+            </div>
+
+            <!--the input form-->
+    		<div class="col-xs-4">
+    			<form action="/" method="POST">
+				  <textarea name="burger_name"></textarea><br><br>
+				  <button class = "btn btn-primary" id ="submit" type="submit">submit</button><br><br>
+				  <p>Enter the name of the burger you want?</p>
+				</form>
+    		</div>
+
+            <!--this will list each eaten(devoured) burger-->
+    		<div class="col-xs-4">
+                <ol>
+                      {{#each burger}}
+                        {{#if devoured}}
+                        <div class = "well">
+                          <li>
+                            <p>{{burger_name}}</p>
+                          </li>
+                        </div>
+                        {{/if}}
+                      {{/each}}
+                </ol>                          
+            </div>                
+                
+    	</div><!--row-->
+		
+	</div> <!--closes container-->
+
+<script>
+    $("#devour").on("click", function() {
+      event.preventDefault();
+      var pointer = "$('#true')";
+      var html = "<li><div class = 'well'>";
+      html+="{{burger}}"
+      html+="</div></li>";
+      
+    });
+
+</script>
+
