@@ -20,7 +20,7 @@
     		<div class="col-xs-4">
                     <!--this will list each uneaten burger-->
                     <ol>
-                      {{#each burger}}
+                      {{#each burgers}}
                         {{#unless devoured}}
                         <div class = "well">
                           <li>
@@ -47,7 +47,7 @@
             <!--this will list each eaten(devoured) burger-->
     		<div class="col-xs-4">
                 <ol>
-                      {{#each burger}}
+                      {{#each burgers}}
                         {{#if devoured}}
                         <div class = "well">
                           <li>
@@ -68,7 +68,7 @@
       event.preventDefault();
       var pointer = "$('#true')";
       var html = "<li><div class = 'well'>";
-      html+="{{burger}}"
+      html+="{{burgers}}"
       html+="</div></li>";
       
     });

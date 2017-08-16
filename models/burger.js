@@ -1,22 +1,25 @@
-var orm = require("../config/orm.js");
+var Sequelize = require("sequelize");
 
-var burger = {
-  selectAll: function(cb) {
-    orm.all("burger", function(res) {
-      cb(res);
-    });
+var sequelize = require("../config/connection.js");
+
+// Creates a "burger" model that matches up with DB
+var burgers = sequelize.define("burgers", {
+  burger_name: {
+    type: Sequelize.STRING
   },
-  // The variables cols and vals are arrays.
-  insertOne: function(burger, data, cb) {
-    orm.insertOne("burger", data, function(res) {
-      cb(res);
-    });
+  devoured: {
+    type: Sequelize.BOOLEAN
   },
-  updateOne: function(id, cb) {
-    orm.updateOne("burger", id, function(res) {
-      cb(res);
-    });
+  createdAt: {
+    type: Sequelize.DATE
   }
- };
+}, {
+  timestamps: true
+});
 
- module.exports = burger;
+// Syncs with DB
+burgers.sync();
+
+
+module.exports = burgers;
+

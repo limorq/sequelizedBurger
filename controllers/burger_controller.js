@@ -3,22 +3,26 @@ var router = express.Router();
 var burg = require("../models/burger.js");
 
 router.get("/", function(req, res) {
-  burg.selectAll(function(data) {
-  var hbsObject = { burger: data };
+  console.log("hit");
+  burg.findAll({}).then(function(data) {
+    console.log(data);
+  var hbsObject = { burgers: data };
   res.render("index", hbsObject);
   });
 
 });
 
 router.post("/", function(req, res) {
-  burg.insertOne("burger", req.body.burger_name, function() {
+  burg.create({
+    burger_name: req.body.burger_name, 
+    devoured: false,
+  }).then(function(result) {
     res.redirect("/");
   });
 });
 
 router.put("/", function(req, res) {
-  var id = parseInt(req.body.id);
-  burg.updateOne(id, function() {    
+  burg.update({devoured: true}, {where: {id:req.body.id}}).then(function(result) {
     res.redirect("/");
   });
 });
