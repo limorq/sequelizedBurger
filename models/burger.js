@@ -3,7 +3,7 @@ var Sequelize = require("sequelize");
 var sequelize = require("../config/connection.js");
 
 // Creates a "burger" model that matches up with DB
-var burgers = sequelize.define("burgers", {
+var burgers = sequelize.define("burger", {
   burger_name: {
     type: Sequelize.STRING
   },

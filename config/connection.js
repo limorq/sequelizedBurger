@@ -1,10 +1,10 @@
 var Sequelize = require("sequelize");
 var connection;
 
-// if (process.env.JAWSDB_URL) {
-// 	  connection = mysql.createConnection(process.env.JAWSDB_URL);
-// 	}
-// else {
+if (process.env.JAWSDB_URL) {
+ 	  connection = mysql.createConnection(process.env.JAWSDB_URL);
+ 	}
+ else {
 	connection = new Sequelize('burgers_db', 'root', 'claire2316', {
 	  host: "localhost",
     port:3306,
