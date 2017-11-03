@@ -18,6 +18,7 @@
   "homepage": "https://github.com/limorq/burger#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "debug-log": "^1.0.1",
     "dotenv": "^2.0.0",
     "express": "^4.15.4",
     "express-handlebars": "^3.0.0",
