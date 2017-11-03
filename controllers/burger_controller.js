@@ -1,7 +1,6 @@
 var express = require("express");
 var router = express.Router();
 var burg = require("../models/burger.js");
-
 router.get("/", function(req, res) {
   burg.findAll({}).then(function(data) {
     console.log(data);
@@ -10,7 +9,6 @@ router.get("/", function(req, res) {
   });
 
 });
-
 router.post("/", function(req, res) {
   burg.create({
     burger_name: req.body.burger_name, 
@@ -19,11 +17,9 @@ router.post("/", function(req, res) {
     res.redirect("/");
   });
 });
-
 router.put("/", function(req, res) {
   burg.update({devoured: true}, {where: {id:req.body.id}}).then(function(result) {
     res.redirect("/");
   });
 });
-
 module.exports = router;
