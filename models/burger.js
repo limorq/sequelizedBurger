@@ -1,7 +1,5 @@
 var Sequelize = require("sequelize");
-
 var sequelize = require("../config/connection.js");
-
 // Creates a "burger" model that matches up with DB
 var burgers = sequelize.define("burger", {
   burger_name: {
@@ -19,7 +17,4 @@ var burgers = sequelize.define("burger", {
 
 // Syncs with DB
 burgers.sync();
-
-
 module.exports = burgers;
-
